@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7A94FE13-ECF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B43EB8F6-72BF-4FBC-A435-74556AC3D325}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernMilkman.CustomerManagement.API", "ModernMilkman.CustomerManagement.API\ModernMilkman.CustomerManagement.API.csproj", "{C6E69EF7-2620-484F-BF32-C89D13B712F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,12 +21,17 @@ Global
 		{F38E311A-876A-411D-A7DA-E1ED7ABDE5A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F38E311A-876A-411D-A7DA-E1ED7ABDE5A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F38E311A-876A-411D-A7DA-E1ED7ABDE5A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6E69EF7-2620-484F-BF32-C89D13B712F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6E69EF7-2620-484F-BF32-C89D13B712F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6E69EF7-2620-484F-BF32-C89D13B712F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6E69EF7-2620-484F-BF32-C89D13B712F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F38E311A-876A-411D-A7DA-E1ED7ABDE5A8} = {B43EB8F6-72BF-4FBC-A435-74556AC3D325}
+		{C6E69EF7-2620-484F-BF32-C89D13B712F6} = {7A94FE13-ECF8-4520-8776-CD190714462C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6118E9FF-1CA1-4DE7-8B9F-3F15D372491C}
