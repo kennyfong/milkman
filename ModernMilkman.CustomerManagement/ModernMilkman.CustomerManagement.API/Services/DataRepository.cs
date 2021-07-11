@@ -1,4 +1,5 @@
-﻿using ModernMilkman.CustomerManagement.API.Model;
+﻿using Microsoft.Extensions.Logging;
+using ModernMilkman.CustomerManagement.API.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,11 @@ namespace ModernMilkman.CustomerManagement.API.Services
     public class DataRepository : IDataRepository
     {
         private readonly List<Customer> _customerList;
+        private readonly ILogger<DataRepository> _logger;
 
-        public DataRepository(List<Customer> customerList)
+        public DataRepository(List<Customer> customerList, ILogger<DataRepository> logger)
         {
+            _logger = logger;
             _customerList = customerList ?? throw new ArgumentNullException(nameof(customerList));
         }
 
