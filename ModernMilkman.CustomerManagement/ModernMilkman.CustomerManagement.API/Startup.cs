@@ -34,6 +34,14 @@ namespace ModernMilkman.CustomerManagement.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModernMilkman.CustomerManagement.API", Version = "v1" });
             });
 
+            services.AddApiVersioning(version =>
+                {
+                    version.DefaultApiVersion = new ApiVersion(1, 0);
+                    version.AssumeDefaultVersionWhenUnspecified = true;
+                    version.ReportApiVersions = true;
+                }
+            );
+
             var logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
                 .CreateLogger();
