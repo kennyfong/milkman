@@ -11,17 +11,17 @@ namespace ModernMilkman.CustomerManagement.API.Validation
     {
         public CustomerValidator()
         {
-            RuleFor(customer => customer.Title).NotNull().MaximumLength(20);
+            RuleFor(customer => customer.Title).NotNull().NotEmpty().MaximumLength(20);
 
-            RuleFor(customer => customer.Forename).NotNull().MaximumLength(50);
+            RuleFor(customer => customer.Forename).NotNull().NotEmpty().MaximumLength(50);
 
-            RuleFor(customer => customer.Surname).NotNull().MaximumLength(50);
+            RuleFor(customer => customer.Surname).NotNull().NotEmpty().MaximumLength(50);
 
-            RuleFor(customer => customer.EmailAddress).NotNull().MaximumLength(75);
+            RuleFor(customer => customer.EmailAddress).NotNull().NotEmpty().MaximumLength(75);
 
-            RuleFor(customer => customer.MobileNumber).NotNull().MaximumLength(15);
+            RuleFor(customer => customer.MobileNumber).NotNull().NotEmpty().MaximumLength(15);
 
-            RuleFor(customer => customer.Addresses).Must(address => address.Count == 0);
+            RuleFor(customer => customer.Addresses).NotNull().Must(address => address.Count > 0);
 
             RuleFor(customer => customer.MainAddress).SetValidator(new AddressValidator());
         }
