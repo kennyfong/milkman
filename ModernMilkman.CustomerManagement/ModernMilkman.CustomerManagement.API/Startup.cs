@@ -1,3 +1,5 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ModernMilkman.CustomerManagement.API.Model;
+using ModernMilkman.CustomerManagement.API.Services;
+using ModernMilkman.CustomerManagement.API.Validation;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -33,6 +38,11 @@ namespace ModernMilkman.CustomerManagement.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModernMilkman.CustomerManagement.API", Version = "v1" });
             });
+
+            services.AddTransient<IValidator<Customer>, CustomerValidator>();
+            services.AddTransient<IValidator<Address>, AddressValidator>();
+
+            services.AddSingleton<IDataRepository, DataRepository>();
 
             services.AddApiVersioning(version =>
                 {
