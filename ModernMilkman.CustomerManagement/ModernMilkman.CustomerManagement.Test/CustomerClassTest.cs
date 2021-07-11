@@ -67,6 +67,7 @@ namespace ModernMilkman.CustomerManagement.Test
         //Title field is up to 20 characters
         [Test]
         [TestCase("Mrmrmrmrmrmrmrmrmrmrmrmrmrmrmrmrmr", false)]
+        [TestCase("", false)]
         [TestCase("Mrmrmrmrmrmrmrmrmrmr", true)]
         public void TitleCannotbeOver20Characters(string titleIn, bool expectedResult)
         {
