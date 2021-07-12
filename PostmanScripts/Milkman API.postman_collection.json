@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "2b723666-f130-4be3-ac03-95a2e913f328",
+		"name": "Milkman API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Customers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "UserId",
+						"value": "user",
+						"type": "text"
+					},
+					{
+						"key": "Password",
+						"value": "pass",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:5001/api/1/Customer?activeOnly=false",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"1",
+						"Customer"
+					],
+					"query": [
+						{
+							"key": "activeOnly",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Active Customers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "UserId",
+						"value": "user",
+						"type": "text"
+					},
+					{
+						"key": "Password",
+						"value": "pass",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:5001/api/1/Customer?activeOnly=true",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"1",
+						"Customer"
+					],
+					"query": [
+						{
+							"key": "activeOnly",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Customer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "UserId",
+						"value": "user",
+						"type": "text"
+					},
+					{
+						"key": "Password",
+						"value": "pass",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Title\":\"Mr\",\"Forename\":\"Andreas\",\"Surname\":\"Anderson\",\"EmailAddress\":\"aa@gmail.com\",\"MobileNumber\":\"0712345678\",\"IsActive\":false,\"Addresses\":{\"1\":{\"AddressLine1\":\"1 Street\",\"AddressLine2\":null,\"Town\":\"Manchester\",\"County\":\"Lancashire\",\"Postcode\":\"M11 1AA\",\"Country\":\"UK\",\"Id\":1}},\"MainAddress\":{\"AddressLine1\":\"1 Street\",\"AddressLine2\":null,\"Town\":\"Manchester\",\"County\":\"Lancashire\",\"Postcode\":\"M11 1AA\",\"Country\":\"UK\",\"Id\":1},\"Id\":1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/1/Customer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"1",
+						"Customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Customer with 2 Addresses",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "UserId",
+						"value": "user",
+						"type": "text"
+					},
+					{
+						"key": "Password",
+						"value": "pass",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Title\":\"Mr\",\"Forename\":\"Bruce\",\"Surname\":\"Banner\",\"EmailAddress\":\"bb@gmail.com\",\"MobileNumber\":\"0712345678\",\"IsActive\":false,\"Addresses\":{\"2\":{\"AddressLine1\":\"1 Street\",\"AddressLine2\":null,\"Town\":\"Manchester\",\"County\":\"Lancashire\",\"Postcode\":\"M11 1AA\",\"Country\":\"UK\",\"Id\":2},\"3\":{\"AddressLine1\":\"1 Street\",\"AddressLine2\":null,\"Town\":\"Manchester\",\"County\":\"Lancashire\",\"Postcode\":\"M11 1AA\",\"Country\":\"UK\",\"Id\":3}},\"MainAddress\":{\"AddressLine1\":\"1 Street\",\"AddressLine2\":null,\"Town\":\"Manchester\",\"County\":\"Lancashire\",\"Postcode\":\"M11 1AA\",\"Country\":\"UK\",\"Id\":2},\"Id\":2}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/1/Customer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"1",
+						"Customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Customer",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "UserId",
+						"value": "user",
+						"type": "text"
+					},
+					{
+						"key": "Password",
+						"value": "pass",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": 1,\r\n  \"addressId\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/1/Customer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"1",
+						"Customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deactivate Customer",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "UserId",
+						"value": "user",
+						"type": "text"
+					},
+					{
+						"key": "Password",
+						"value": "pass",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": 1,\r\n  \"addressId\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/1/Customer/Deactivate",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"1",
+						"Customer",
+						"Deactivate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Address",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "UserId",
+						"value": "user",
+						"type": "text"
+					},
+					{
+						"key": "Password",
+						"value": "pass",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": 1,\r\n  \"addressId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/1/Customer/DeleteAddress",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"1",
+						"Customer",
+						"DeleteAddress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Main Address",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "UserId",
+						"value": "user",
+						"type": "text"
+					},
+					{
+						"key": "Password",
+						"value": "pass",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": 2,\r\n  \"addressId\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/1/Customer/SetMainAddress",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"1",
+						"Customer",
+						"SetMainAddress"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
