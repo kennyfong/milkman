@@ -322,7 +322,6 @@ namespace ModernMilkman.CustomerManagement.Test
                 Forename = "Andreas",
                 Surname = "Anderson",
                 EmailAddress = "aa@gmail.com",
-                MobileNumber = "0123456789",
                 Addresses = new List<Address>() { address1 },
                 MainAddress = address1
             };
