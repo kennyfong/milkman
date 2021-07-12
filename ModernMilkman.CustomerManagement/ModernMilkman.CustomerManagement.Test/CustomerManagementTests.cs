@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging.Abstractions;
 using ModernMilkman.CustomerManagement.API.Model;
 using ModernMilkman.CustomerManagement.API.Services;
 using NUnit.Framework;
@@ -61,13 +62,14 @@ namespace ModernMilkman.CustomerManagement.Test
                 EmailAddress = "bb@hotmail.com",
                 MobileNumber = "0123456789",
                 Addresses = new List<Address>() { address1 },
-                MainAddress = address1,
+                MainAddress = address3,
                 IsActive = false
             };
 
-            List<Customer> _customerList = new List<Customer>() { customer1, customer2 };
+            _dataRepository = new DataRepository(new NullLogger<DataRepository>());
 
-            _dataRepository = new DataRepository(_customerList);
+            _dataRepository.AddCustomer(customer1);
+            _dataRepository.AddCustomer(customer2);
         }
 
         //A customer can be added to the database

@@ -9,17 +9,18 @@ namespace ModernMilkman.CustomerManagement.API.Services
 {
     public class DataRepository : IDataRepository
     {
-        private readonly List<Customer> _customerList;
+        private readonly List<Customer> _customerList = new List<Customer>();
         private readonly ILogger<DataRepository> _logger;
 
-        public DataRepository(List<Customer> customerList, ILogger<DataRepository> logger)
+        public DataRepository(ILogger<DataRepository> logger)
         {
             _logger = logger;
-            _customerList = customerList ?? throw new ArgumentNullException(nameof(customerList));
         }
 
         public void AddCustomer(Customer customer)
         {
+            _logger.LogInformation("Adding customer");
+
             if (_customerList.Any(item => item.CustomerId == customer.CustomerId))
             {
                 throw new ArgumentException("Customer already exists");
