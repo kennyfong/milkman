@@ -22,14 +22,7 @@ namespace ModernMilkman.CustomerManagement.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>()
-                    .UseSerilog((hostingContext, loggerConfiguration) =>
-                     {
-                         loggerConfiguration
-                             .ReadFrom.Configuration(hostingContext.Configuration)
-                             .Enrich.FromLogContext()
-                             .Enrich.WithProperty("ApplicationName", typeof(Program).Assembly.GetName().Name)
-                             .Enrich.WithProperty("Environment", hostingContext.HostingEnvironment);
-                     });
+                    .UseSerilog();
                 });
     }
 }
