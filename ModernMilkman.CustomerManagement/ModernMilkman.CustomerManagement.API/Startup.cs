@@ -64,10 +64,15 @@ namespace ModernMilkman.CustomerManagement.API
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/error");
+
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ModernMilkman.CustomerManagement.API v1"));
             }
+            else
+            {
+                app.UseExceptionHandler("/error");
+            }    
 
             app.UseHttpsRedirection();
 
