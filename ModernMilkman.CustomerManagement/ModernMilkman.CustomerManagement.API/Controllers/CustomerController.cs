@@ -47,36 +47,36 @@ namespace ModernMilkman.CustomerManagement.API.Controllers
 
         [HttpPut("Deactivate")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult DeactivateCustomer(Customer customer)
+        public IActionResult DeactivateCustomer([FromBody] CustomerAPIRequest request)
         {
-            _dataRepository.MarkCustomerInActive(customer.CustomerId);
+            _dataRepository.MarkCustomerInActive(request.CustomerId);
 
             return Ok();
         }
 
         [HttpPut("DeleteAddress")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult DeleteAddress(Customer customer, Address address)
+        public IActionResult DeleteAddress([FromBody] CustomerAPIRequest request)
         {
-            _dataRepository.DeleteAddress(customer.CustomerId, address.AddressId);
+            _dataRepository.DeleteAddress(request.CustomerId, request.AddressId);
 
             return Ok();
         }
 
         [HttpPut("SetMainAddress")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult SetMainAddress(Customer customer, Address address)
+        public IActionResult SetMainAddress([FromBody] CustomerAPIRequest request)
         {
-            _dataRepository.SetMainAddress(customer.CustomerId, address.AddressId);
+            _dataRepository.SetMainAddress(request.CustomerId, request.AddressId);
 
             return Ok();
         }
 
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult DeleteCustomer(Customer customer)
+        public IActionResult DeleteCustomer([FromBody] CustomerAPIRequest request)
         {
-            _dataRepository.DeleteCustomer(customer.CustomerId);
+            _dataRepository.DeleteCustomer(request.CustomerId);
 
             return Ok();
         }
