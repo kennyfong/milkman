@@ -33,14 +33,12 @@ namespace ModernMilkman.CustomerManagement.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation(config => config.RegisterValidatorsFromAssemblyContaining<Startup>());
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModernMilkman.CustomerManagement.API", Version = "v1" });
             });
-
-            services.AddTransient<IValidator<Customer>, CustomerValidator>();
-            services.AddTransient<IValidator<Address>, AddressValidator>();
 
             services.AddSingleton<IDataRepository, DataRepository>();
 
