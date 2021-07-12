@@ -21,12 +21,22 @@ namespace ModernMilkman.CustomerManagement.API.Controllers
         private readonly ILogger<CustomerController> _logger;
         private readonly IDataRepository _dataRepository;
 
+        /// <summary>
+        /// Constructor method for the customer controller
+        /// </summary>
+        /// <param name="logger">logger object for the controller</param>
+        /// <param name="dataRepository">service for performing action on data store</param>
         public CustomerController(ILogger<CustomerController> logger, IDataRepository dataRepository)
         {
             _logger = logger;
             _dataRepository = dataRepository ?? throw new ArgumentNullException(nameof(dataRepository));
         }
 
+        /// <summary>
+        /// Retrieve all customers
+        /// </summary>
+        /// <param name="activeOnly">Retrieve active customers only</param>
+        /// <returns>Returns list of customer</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Customer>))]
         public IActionResult GetCustomers(bool? activeOnly)
@@ -39,6 +49,11 @@ namespace ModernMilkman.CustomerManagement.API.Controllers
             return Ok(_dataRepository.ReturnAllCustomers());
         }
 
+        /// <summary>
+        /// Add a new customer to the data store
+        /// </summary>
+        /// <param name="customer">Customer object</param>
+        /// <returns>Returns status of the method</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult AddCustomer(Customer customer)
@@ -48,6 +63,11 @@ namespace ModernMilkman.CustomerManagement.API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Mark a customer inactive
+        /// </summary>
+        /// <param name="request">request object with customer details</param>
+        /// <returns>Returns status of the method</returns>
         [HttpPut("Deactivate")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult DeactivateCustomer([FromBody] CustomerAPIRequest request)
@@ -57,6 +77,11 @@ namespace ModernMilkman.CustomerManagement.API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Delete an address from the customer
+        /// </summary>
+        /// <param name="request">request object with customer details</param>
+        /// <returns>Returns status of the method</returns>
         [HttpPut("DeleteAddress")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult DeleteAddress([FromBody] CustomerAPIRequest request)
@@ -66,6 +91,11 @@ namespace ModernMilkman.CustomerManagement.API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Set an address for a customer as the main address
+        /// </summary>
+        /// <param name="request">request object with customer details</param>
+        /// <returns>Returns status of the method</returns>
         [HttpPut("SetMainAddress")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult SetMainAddress([FromBody] CustomerAPIRequest request)
@@ -75,6 +105,11 @@ namespace ModernMilkman.CustomerManagement.API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Delete a customer
+        /// </summary>
+        /// <param name="request">request object with customer details</param>
+        /// <returns>Returns status of the method</returns>
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult DeleteCustomer([FromBody] CustomerAPIRequest request)

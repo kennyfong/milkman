@@ -17,6 +17,10 @@ namespace ModernMilkman.CustomerManagement.API.Services
             _logger = logger;
         }
 
+        /// <summary>
+        /// Add a customer to the list
+        /// </summary>
+        /// <param name="customer">customer object</param>
         public void AddCustomer(Customer customer)
         {
             _logger.LogInformation("Adding customer");
@@ -34,6 +38,11 @@ namespace ModernMilkman.CustomerManagement.API.Services
             _logger.LogInformation("Customer added successfully");
         }
 
+        /// <summary>
+        /// Delete an address from a customer
+        /// </summary>
+        /// <param name="customerId">customer id</param>
+        /// <param name="addressId">address id</param>
         public void DeleteAddress(int customerId, int addressId)
         {
             _logger.LogInformation($"Deleting an address for customer Id {customerId} and address Id {addressId}");
@@ -68,6 +77,10 @@ namespace ModernMilkman.CustomerManagement.API.Services
             _logger.LogInformation("Address removed");
         }
 
+        /// <summary>
+        /// Delete a customer from the list
+        /// </summary>
+        /// <param name="customerId"></param>
         public void DeleteCustomer(int customerId)
         {
             _logger.LogInformation($"Deleting a customer for customer Id {customerId}");
@@ -104,6 +117,10 @@ namespace ModernMilkman.CustomerManagement.API.Services
             _logger.LogInformation("Customer is now inactive");
         }
 
+        /// <summary>
+        /// Return all active customers
+        /// </summary>
+        /// <returns>Return a list of customer objects</returns>
         public List<Customer> ReturnAllActiveCustomers()
         {
             _logger.LogInformation("Returning all active customers");
@@ -111,6 +128,10 @@ namespace ModernMilkman.CustomerManagement.API.Services
             return _customerList.Where(customer => customer.IsActive).ToList();
         }
 
+        /// <summary>
+        /// Return all customers from the data store
+        /// </summary>
+        /// <returns>Return only active customers</returns>
         public List<Customer> ReturnAllCustomers()
         {
             _logger.LogInformation("Returning all customers");
@@ -118,6 +139,11 @@ namespace ModernMilkman.CustomerManagement.API.Services
             return _customerList;
         }
 
+        /// <summary>
+        /// Set a non-main address to be the main address for a customer
+        /// </summary>
+        /// <param name="customerId">customer id</param>
+        /// <param name="addressId">address id</param>
         public void SetMainAddress(int customerId, int addressId)
         {
             _logger.LogInformation($"Setting main address for customer Id {customerId} for address id {addressId}");
