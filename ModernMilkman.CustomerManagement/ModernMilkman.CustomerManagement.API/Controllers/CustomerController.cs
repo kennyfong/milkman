@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ModernMilkman.CustomerManagement.API.Attributes.BasicAuthenticationWEBAPI.Models;
 using ModernMilkman.CustomerManagement.API.Model;
 using ModernMilkman.CustomerManagement.API.Services;
 using System;
@@ -13,6 +15,7 @@ namespace ModernMilkman.CustomerManagement.API.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/{v:apiVersion}/[controller]")]
+    [CustomAuth]
     public class CustomerController : ControllerBase
     {
         private readonly ILogger<CustomerController> _logger;
