@@ -25,7 +25,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -33,13 +33,13 @@ namespace ModernMilkman.CustomerManagement.Test
             };
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = "Mr",
                 Forename = "Andreas",
                 Surname = "Anderson",
                 EmailAddress = "aa@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -49,12 +49,12 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer2 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Forename = "Andreas",
                 Surname = "Anderson",
                 EmailAddress = "aa@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -73,7 +73,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -82,13 +82,13 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = titleIn,
                 Forename = "Andreas",
                 Surname = "Anderson",
                 EmailAddress = "aa@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -107,7 +107,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -116,12 +116,12 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = "Mr",
                 Surname = "Anderson",
                 EmailAddress = "aa@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -140,7 +140,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -149,13 +149,13 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = "Mr",
                 Forename = forenameIn,
                 Surname = "Anderson",
                 EmailAddress = "aa@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -174,7 +174,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -183,12 +183,12 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = "Mr",
                 Forename = "Andreas",
                 EmailAddress = "aa@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -207,7 +207,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -216,13 +216,13 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = "Mr",
                 Forename = "Andreas",
                 Surname = surnameIn,
                 EmailAddress = "aa@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -241,7 +241,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -250,12 +250,12 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = "Mr",
                 Forename = "Andreas",
                 Surname = "Anderson",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -274,7 +274,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -283,13 +283,13 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = "Mr",
                 Forename = "Andreas",
                 Surname = "Anderson",
                 EmailAddress = emailIn,
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -308,7 +308,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -317,12 +317,12 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = "Mr",
                 Forename = "Andreas",
                 Surname = "Anderson",
                 EmailAddress = "aa@gmail.com",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -341,7 +341,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -350,13 +350,13 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = "Mr",
                 Forename = "Andreas",
                 Surname = "Anderson",
                 EmailAddress = "aa@gmail.com",
                 MobileNumber = mobileIn,
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 

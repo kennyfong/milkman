@@ -17,7 +17,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -26,7 +26,7 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Address address2 = new Address()
             {
-                AddressId = 2,
+                Id = 2,
                 AddressLine1 = "2 Street",
                 Town = "Birmingham",
                 Postcode = "B11 1AA"
@@ -34,19 +34,19 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = "Mr",
                 Forename = "Andreas",
                 Surname = "Anderson",
                 EmailAddress = "aa@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1, address2 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 }, { address2.Id, address2 } },
                 MainAddress = address1
             };
 
             Address address3 = new Address()
             {
-                AddressId = 3,
+                Id = 3,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -55,13 +55,13 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer2 = new Customer()
             {
-                CustomerId = 2,
+                Id = 2,
                 Title = "Mr",
                 Forename = "Bruce",
                 Surname = "Beale",
                 EmailAddress = "bb@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address3,
                 IsActive = false
             };
@@ -78,7 +78,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 3,
+                Id = 3,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -87,13 +87,13 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 3,
+                Id = 3,
                 Title = "Mr",
                 Forename = "Chris",
                 Surname = "Campbell",
                 EmailAddress = "cc@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -108,7 +108,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -117,7 +117,7 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Address address2 = new Address()
             {
-                AddressId = 2,
+                Id = 2,
                 AddressLine1 = "2 Street",
                 Town = "Birmingham",
                 Postcode = "B11 1AA"
@@ -125,13 +125,13 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 1,
+                Id = 1,
                 Title = "Mr",
                 Forename = "Andreas",
                 Surname = "Anderson",
                 EmailAddress = "aa@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1, address2 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1
             };
 
@@ -160,7 +160,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             _dataRepository.SetMainAddress(1, 2);
 
-            Assert.IsTrue(_dataRepository.ReturnAllCustomers().FirstOrDefault(customer => customer.CustomerId == 1).MainAddress.AddressId == 2);
+            Assert.IsTrue(_dataRepository.ReturnAllCustomers().FirstOrDefault(customer => customer.Id == 1).MainAddress.Id == 2);
         }
 
         //A customer can be marked as in-active
@@ -168,7 +168,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             _dataRepository.MarkCustomerInActive(1);
 
-            Assert.IsTrue(!_dataRepository.ReturnAllCustomers().FirstOrDefault(customer => customer.CustomerId == 1).IsActive);
+            Assert.IsTrue(!_dataRepository.ReturnAllCustomers().FirstOrDefault(customer => customer.Id == 1).IsActive);
         }
 
         //list of ALL customers can be returned
@@ -182,7 +182,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 3,
+                Id = 3,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",
@@ -191,13 +191,13 @@ namespace ModernMilkman.CustomerManagement.Test
 
             Customer customer1 = new Customer()
             {
-                CustomerId = 2,
+                Id = 2,
                 Title = "Mr",
                 Forename = "Bruce",
                 Surname = "Beale",
                 EmailAddress = "bb@hotmail.com",
                 MobileNumber = "0123456789",
-                Addresses = new List<Address>() { address1 },
+                Addresses = new Dictionary<int, Address>() { { address1.Id, address1 } },
                 MainAddress = address1,
                 IsActive = false
             };

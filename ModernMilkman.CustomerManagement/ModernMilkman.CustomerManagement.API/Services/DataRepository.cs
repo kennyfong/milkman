@@ -9,7 +9,7 @@ namespace ModernMilkman.CustomerManagement.API.Services
 {
     public class DataRepository : IDataRepository
     {
-        private readonly List<Customer> _customerList = new List<Customer>();
+        private readonly Dictionary<int, Customer> _customerDict = new Dictionary<int, Customer>();
         private readonly ILogger<DataRepository> _logger;
 
         public DataRepository(ILogger<DataRepository> logger)
@@ -27,13 +27,13 @@ namespace ModernMilkman.CustomerManagement.API.Services
 
             _logger.LogDebug("Adding {@customer}", customer);
 
-            if (_customerList.Any(item => item.CustomerId == customer.CustomerId))
+            if (_customerDict.ContainsKey(customer.Id))
             {
                 _logger.LogError("Customer already exists", customer);
                 throw new ArgumentException("Customer already exists");
             }
 
-            _customerList.Add(customer);
+            _customerDict.Add(customer.Id, customer);
 
             _logger.LogInformation("Customer added successfully");
         }
@@ -47,7 +47,7 @@ namespace ModernMilkman.CustomerManagement.API.Services
         {
             _logger.LogInformation($"Deleting an address for customer Id {customerId} and address Id {addressId}");
 
-            Customer customerReturned = _customerList.FirstOrDefault(item => item.CustomerId == customerId);
+            _customerDict.TryGetValue(customerId, out var customerReturned);
 
             if (customerReturned == null)
             {
@@ -56,7 +56,7 @@ namespace ModernMilkman.CustomerManagement.API.Services
                 throw new NullReferenceException("Customer Does Not Exist");
             }
 
-            Address addressReturned = customerReturned.Addresses.FirstOrDefault(item => item.AddressId == addressId);
+            customerReturned.Addresses.TryGetValue(addressId, out var addressReturned);
 
             if (addressReturned == null)
             {
@@ -72,7 +72,7 @@ namespace ModernMilkman.CustomerManagement.API.Services
                 throw new ArgumentException("Customer must have at least one address");
             }
 
-            customerReturned.Addresses.Remove(addressReturned);
+            customerReturned.Addresses.Remove(addressReturned.Id);
 
             _logger.LogInformation("Address removed");
         }
@@ -85,7 +85,7 @@ namespace ModernMilkman.CustomerManagement.API.Services
         {
             _logger.LogInformation($"Deleting a customer for customer Id {customerId}");
 
-            Customer customerReturned = _customerList.FirstOrDefault(item => item.CustomerId == customerId);
+            _customerDict.TryGetValue(customerId, out var customerReturned);
 
             if (customerReturned == null)
             {
@@ -94,7 +94,7 @@ namespace ModernMilkman.CustomerManagement.API.Services
                 throw new NullReferenceException("Customer Does Not Exist");
             }
 
-            _customerList.Remove(customerReturned);
+            _customerDict.Remove(customerReturned.Id);
 
             _logger.LogInformation("Customer removed");
         }
@@ -103,7 +103,7 @@ namespace ModernMilkman.CustomerManagement.API.Services
         {
             _logger.LogInformation($"Deactivating customer for customer Id {customerId}");
 
-            Customer customerReturned = _customerList.FirstOrDefault(item => item.CustomerId == customerId);
+            _customerDict.TryGetValue(customerId, out var customerReturned);
 
             if (customerReturned == null)
             {
@@ -125,7 +125,11 @@ namespace ModernMilkman.CustomerManagement.API.Services
         {
             _logger.LogInformation("Returning all active customers");
 
-            return _customerList.Where(customer => customer.IsActive).ToList();
+            var resultReturn = (from pv in _customerDict
+            where pv.Value.IsActive
+            select pv.Value).ToList();
+
+            return resultReturn;
         }
 
         /// <summary>
@@ -136,7 +140,7 @@ namespace ModernMilkman.CustomerManagement.API.Services
         {
             _logger.LogInformation("Returning all customers");
 
-            return _customerList;
+            return _customerDict.Values.ToList();
         }
 
         /// <summary>
@@ -148,14 +152,14 @@ namespace ModernMilkman.CustomerManagement.API.Services
         {
             _logger.LogInformation($"Setting main address for customer Id {customerId} for address id {addressId}");
 
-            Customer customerReturned = _customerList.FirstOrDefault(item => item.CustomerId == customerId);
+            _customerDict.TryGetValue(customerId, out var customerReturned);
 
             if (customerReturned == null)
             {
                 throw new NullReferenceException("Customer Does Not Exist");
             }
 
-            Address addressReturned = customerReturned.Addresses.FirstOrDefault(item => item.AddressId == addressId);
+            customerReturned.Addresses.TryGetValue(addressId, out var addressReturned);
 
             if (addressReturned == null)
             {

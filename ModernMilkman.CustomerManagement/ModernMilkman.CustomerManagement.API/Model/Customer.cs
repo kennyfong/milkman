@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ModernMilkman.CustomerManagement.API.Model
 {
-    public class Customer
+    public class Customer : BusinessObject
     {
-        public int CustomerId { get; set; }
-
         public string Title { get; set; }
 
         public string Forename { get; set; }
@@ -22,7 +20,7 @@ namespace ModernMilkman.CustomerManagement.API.Model
 
         public bool IsActive { get; set; }
 
-        public List<Address> Addresses { get; set; }
+        public Dictionary<int, Address> Addresses { get; set; }
 
         public Address MainAddress { get; set; }
     }

@@ -25,7 +25,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 Town = "Manchester",
                 County = "Lancashire",
                 Postcode = "M11 1AA"
@@ -46,7 +46,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = addressline1In,
                 Town = "Manchester",
                 County = "Lancashire",
@@ -71,7 +71,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 AddressLine2 = addressLine2In,
                 Town = "Manchester",
@@ -94,7 +94,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 County = "Lancashire",
                 Postcode = "M11 1AA"
@@ -115,7 +115,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = townIn,
                 County = "Lancashire",
@@ -140,7 +140,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = countyIn,
@@ -162,7 +162,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire"
@@ -183,7 +183,7 @@ namespace ModernMilkman.CustomerManagement.Test
         {
             Address address1 = new Address()
             {
-                AddressId = 1,
+                Id = 1,
                 AddressLine1 = "1 Street",
                 Town = "Manchester",
                 County = "Lancashire",

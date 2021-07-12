@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ModernMilkman.CustomerManagement.API.Model
 {
-    public class Address
+    public class Address : BusinessObject
     {
-        public int AddressId { get; set; }
-
         public string AddressLine1 { get; set; }
 
         public string AddressLine2 { get; set; }
