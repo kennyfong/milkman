@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ModernMilkman.CustomerManagement.API.Attributes;
 using ModernMilkman.CustomerManagement.API.Model;
 using ModernMilkman.CustomerManagement.API.Services;
 using ModernMilkman.CustomerManagement.API.Validation;
@@ -38,6 +39,8 @@ namespace ModernMilkman.CustomerManagement.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModernMilkman.CustomerManagement.API", Version = "v1" });
+
+                c.OperationFilter<MyHeaderFilter>();
             });
 
             services.AddSingleton<IDataRepository, DataRepository>();
