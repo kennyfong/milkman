@@ -50,3 +50,8 @@ The following data entities are required. NOTE: These may not be complete for yo
 | Postcode | Y      |    Up to 10 characters |
 | Country | N      |    If not provided default to UK |
 
+# Application Summary
+
+A .Net 5 ASP.NET Core Web Api developed in Visual Studio 2019. Please do not use IIS or IIS Express to run and debug the application as the Postman scripts is configured to use localhost on port 5001 using HTTPS protocol.
+
+Swagger is available and should be the default page to load when debugging
